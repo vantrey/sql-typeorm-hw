@@ -37,11 +37,11 @@ export class UploadController {
     file: Express.Multer.File,
   ) {
     console.log('file', file);
-    const result = await this.storageAdapter.saveFile(file.buffer, '1', '1.jpg');
+    //const result = await this.storageAdapter.saveFile(file.buffer, '1', '1.jpg');
 
     return {
       wallpaper: {
-        url: `https://backettest.storage.yandexcloud.net/${result.url}`,
+        url: `https://backettest.storage.yandexcloud.net/${'result.url'}`,
         width: 0,
         height: 0,
         fileSize: 0,
