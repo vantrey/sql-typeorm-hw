@@ -18,25 +18,15 @@ export class UploadController {
   constructor(private readonly storageAdapter: StorageAdapter) {}
 
   @Post(':id/images/wallpaper')
-  @UseInterceptors(FileInterceptor('file'))
+  //@UseInterceptors(FileInterceptor('file'))
   async uploadFile(
     @Req() req,
     @Param('id') id: string,
-    @UploadedFile(
-      new ParseFilePipeBuilder()
-        .addFileTypeValidator({
-          fileType: 'jpeg',
-        })
-        .addMaxSizeValidator({
-          maxSize: 100_000,
-        })
-        .build({
-          errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-        }),
-    )
-    file: Express.Multer.File,
+    //@UploadedFile()
+    //file: Express.Multer.File,
   ) {
-    console.log('file', file);
+    console.log(req.headers)
+    //console.log('file', file);
     //const result = await this.storageAdapter.saveFile(file.buffer, '1', '1.jpg');
 
     return {

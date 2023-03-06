@@ -4,24 +4,35 @@ import { UsersModule } from './users/users.module';
 import { QuizModule } from './quiz/quiz.module';
 import { ForTestingModule } from './for-testing-module/for-testing.module';
 import { UploadModule } from './upload/upload.module';
-
-export const typeOrmOptions: TypeOrmModuleOptions = {
-  type: 'postgres',
-  database: 'tfyuxhlu',
-  password: 'i706C49bh-FJUM3QrNKym2QAfmDoBqtZ',
-  username: 'tfyuxhlu',
-  host: 'mouse.db.elephantsql.com',
-  autoLoadEntities: true,
-  synchronize: true,
-};
+import {ConfigModule, ConfigService} from '@nestjs/config';
+import configuration, {ConfigurationType} from './config/configuration';
+import {TelegramModule} from './telegram/telegram.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeOrmOptions),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
+    TypeOrmModule.forRootAsync({inject: [ConfigService],
+      useFactory: (configService: ConfigService<ConfigurationType, true>) => {
+        const databaseSettings = configService.get('databaseSettings', { infer: true });
+
+      return {
+        type: 'postgres',
+        database: databaseSettings.DATABASE,
+        password: databaseSettings.PASSWORD,
+        username: databaseSettings.USERNAME,
+        host: databaseSettings.HOST,
+        autoLoadEntities: true,
+        synchronize: true,
+      }
+      }}),
     UsersModule,
     QuizModule,
     ForTestingModule,
     UploadModule,
+    TelegramModule
   ],
 })
 export class AppModule {}
