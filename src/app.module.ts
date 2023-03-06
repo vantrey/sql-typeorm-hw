@@ -17,7 +17,7 @@ import {TelegramModule} from './telegram/telegram.module';
     TypeOrmModule.forRootAsync({inject: [ConfigService],
       useFactory: (configService: ConfigService<ConfigurationType, true>) => {
         const databaseSettings = configService.get('databaseSettings', { infer: true });
-
+        console.log('databaseSettings = ', databaseSettings)
       return {
         type: 'postgres',
         database: databaseSettings.DATABASE,
