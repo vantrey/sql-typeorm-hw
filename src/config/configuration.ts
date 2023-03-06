@@ -44,8 +44,7 @@ export default () => {
   const environmentVariables = process.env;
 
   console.log('process.env.NODE_ENV =', environmentVariables.NODE_ENV);
-  const currentEnvironment: Environments =
-    (environmentVariables.NODE_ENV as Environments) || Environments.DEVELOPMENT;
+  const currentEnvironment: Environments = environmentVariables.NODE_ENV as Environments;
 
   return getConfig(environmentVariables, currentEnvironment);
 };
