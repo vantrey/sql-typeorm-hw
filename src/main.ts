@@ -2,23 +2,23 @@ import {NestFactory} from '@nestjs/core';
 import {AppModule} from './app.module';
 import {addGlobalPipeToApp} from './utils/main-settings';
 import {AllExceptionsFilter} from './utils/all-exceptions-filter';
-import * as ngrok from 'ngrok'
+//import * as ngrok from 'ngrok'
 import {ConfigService} from '@nestjs/config';
 import {ConfigurationType} from './config/configuration';
-import axios from 'axios';
-import {TelegramService} from './telegram/application/services/telegram.service';
+//import axios from 'axios';
+//import {TelegramService} from './telegram/application/services/telegram.service';
 
-const ngrokConnect = async (port: number) => {
+/*const ngrokConnect = async (port: number) => {
   return await ngrok.connect({
     addr: port
   });
-}
+}*/
 
-const setTelegramHook = async (botSecret: string, url: string) => {
+/*const setTelegramHook = async (botSecret: string, url: string) => {
   await axios.post(`https://api.telegram.org/bot${botSecret}/setWebhook`, {
     url
   })
-}
+}*/
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -30,11 +30,11 @@ async function bootstrap() {
   const telegramSettings = configService.get('telegramSettings', { infer: true });
   const apiSettings = configService.get('apiSettings', { infer: true });
 
-  let baseUrl = apiSettings.BASE_URL
+  //let baseUrl = apiSettings.BASE_URL
 
-  if(environmentSettings.isDevelopment) {
+  /*if(environmentSettings.isDevelopment) {
     baseUrl = await ngrokConnect(5005)
-  }
+  }*/
 
 /*    console.log('baseUrl =', baseUrl)
   const telegramService = await app.resolve(TelegramService)
@@ -45,4 +45,4 @@ async function bootstrap() {
 }
 bootstrap();
 
-export default bootstrap
+//export default bootstrap
