@@ -36,9 +36,9 @@ async function bootstrap() {
     baseUrl = await ngrokConnect(5005)
   }
 
-    console.log('baseUrl =', baseUrl)
+/*    console.log('baseUrl =', baseUrl)
   const telegramService = await app.resolve(TelegramService)
-  await telegramService.setHook(`${baseUrl}/telegram/hook`)
+  await telegramService.setHook(`${baseUrl}/telegram/hook`)*/
 
   await app.listen(5005);
   console.log(`Application is running on: ${await app.getUrl()}`);
