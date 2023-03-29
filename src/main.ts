@@ -20,7 +20,7 @@ import {ConfigurationType} from './config/configuration';
   })
 }*/
 
-async function bootstrap() {
+export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalFilters(new AllExceptionsFilter(false));
@@ -44,5 +44,3 @@ async function bootstrap() {
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
-
-export default bootstrap
