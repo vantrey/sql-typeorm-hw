@@ -22,7 +22,7 @@ import {ConfigurationType} from './config/configuration';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  console.log('11')
   app.useGlobalFilters(new AllExceptionsFilter(false));
   addGlobalPipeToApp(app);
   const configService = app.get(ConfigService<ConfigurationType, true>);
