@@ -1,6 +1,6 @@
 import {
   Body,
-  Controller,
+  Controller, Get,
   HttpCode,
   HttpStatus,
   Param,
@@ -16,6 +16,13 @@ import { StorageAdapter } from '../../application/adapters/storage.adapter';
 @Controller('blogger/blogs')
 export class UploadController {
   constructor(private readonly storageAdapter: StorageAdapter) {}
+
+  @Get()
+  async get() {
+    return {
+      hh: '123'
+    }
+  }
 
   @Post(':id/images/wallpaper')
   //@UseInterceptors(FileInterceptor('file'))
