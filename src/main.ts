@@ -20,7 +20,7 @@ import {ConfigurationType} from './config/configuration';
   })
 }*/
 
-export async function bootstrap() {
+async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalFilters(new AllExceptionsFilter(false));
