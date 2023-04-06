@@ -30,6 +30,11 @@ async function bootstrap() {
   const telegramSettings = configService.get('telegramSettings', { infer: true });
   const apiSettings = configService.get('apiSettings', { infer: true });
 
+  app.enableCors({
+    credentials: true,
+    origin: ['http://localhost:5001']
+  })
+
   //let baseUrl = apiSettings.BASE_URL
 
   /*if(environmentSettings.isDevelopment) {
