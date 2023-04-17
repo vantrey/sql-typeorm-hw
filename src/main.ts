@@ -5,7 +5,7 @@ import {AllExceptionsFilter} from './utils/all-exceptions-filter';
 //import * as ngrok from 'ngrok'
 import {ConfigService} from '@nestjs/config';
 import {ConfigurationType} from './config/configuration';
-import * as cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 //import axios from 'axios';
 //import {TelegramService} from './telegram/application/services/telegram.service';
 
