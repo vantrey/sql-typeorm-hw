@@ -1,6 +1,7 @@
-import { Controller, Delete, HttpCode } from '@nestjs/common';
-import { DataSource } from 'typeorm';
-import { CLEAR_ALL_DATA_QUERY_FOR_TESTING } from './clear-all-data-query';
+import {Controller, Delete, HttpCode} from '@nestjs/common';
+import {DataSource} from 'typeorm';
+import {CLEAR_ALL_DATA_QUERY_FOR_TESTING} from './clear-all-data-query';
+
 
 @Controller('testing')
 export class ForTestingController {

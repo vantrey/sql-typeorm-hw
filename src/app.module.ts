@@ -30,7 +30,7 @@ import {TelegramModule} from './telegram/telegram.module';
       }}),
     UsersModule,
     QuizModule,
-    ForTestingModule,
+    //ForTestingModule,
     UploadModule,
     TelegramModule
   ],
